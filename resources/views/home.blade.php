@@ -12,7 +12,7 @@
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top p-3">
     <div class="container">
-        <a href="/"><img class="img-fluid" src="{{ URL::to('/assets/petclick_logo-light.png') }}" style="width: 100px"></a>
+        <a href="/"><img class="img-fluid" src="{{ URL::to('/assets/bpslogo.png') }}" style="width: 100px"></a>
         {{-- <a class="navbar-brand" href="#">PetClick</a> --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,16 +26,7 @@
             <a class="nav-link" href="#about">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#services">Services</a>
-          </li>
-          <li class="nav-tem">
-            <a class="nav-link" href="#gallery">Gallery</a>
-          </li>
-          <li class="nav-tem">
-            <a class="nav-link" href="#location">Locations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
+            <a class="nav-link" aria-current="page" href="/myapp">Logbookku</a>
           </li>
           <li class="nav-item">
             @if (Route::has('login'))
@@ -47,7 +38,7 @@
                           </a>
 
                           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="/myapp">My Appointement</a>
+                              <a class="dropdown-item" href="/myapp">My Logbook</a>
                               <a class="dropdown-item" href="/myprofile">My Profile</a>
                               <a class="dropdown-item" href="{{ route('logout') }}"
                               onclick="event.preventDefault();
@@ -76,12 +67,12 @@
     <div class="container banner-content col-lg-6 position-absolute top-50 start-50 translate-middle">
       <div class="text-center">
         <p class="fs-1 fw-semibold">
-          We Care About Your Pets
+          SiBook BPS SURABAYA
         </p>
         <p class="d-none d-md-block fw-normal">
-          Everything your pet's health needs is here with us.
+          Mari kita catat logbookmu
         </p>
-        <a><button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#appointmentModal">Make Appointement</button></a>
+        <a><button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#appointmentModal">Buat Logbook</button></a>
         </div>
       </div>
     </div>
@@ -93,7 +84,7 @@
     <div class="modal-content">
       @auth
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Appointement Form</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Logbook Form</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div  class="modal-body p-4">
