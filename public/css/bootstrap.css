@@ -56,6 +56,7 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -2372,7 +2373,19 @@ textarea.form-control-lg {
   color: transparent;
   text-shadow: 0 0 0 #212529;
 }
+.fs-1.fw-semibold {
+    font-family: 'Poppins';
+    color: #f4a700;
+    font-weight: 900
 
+  }
+
+.fw-normal {
+    font-family: 'Poppins';
+    color: #f4a700;
+    font-weight: 900
+
+  }
 .form-select-sm {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -3988,7 +4001,7 @@ textarea.form-control-lg {
   padding: 0.25rem 0.75rem;
   font-size: 1.25rem;
   line-height: 1;
-  background-color: transparent;
+  background-color: color(srgb-linear rgb(0, 0, 0) );
   border: 1px solid transparent;
   border-radius: 0.25rem;
   transition: box-shadow 0.15s ease-in-out;
@@ -4013,6 +4026,7 @@ textarea.form-control-lg {
   height: 1.5em;
   vertical-align: middle;
   background-repeat: no-repeat;
+  background-color: color(srgb-linear rgb(0, 0, 0) );
   background-position: center;
   background-size: 100%;
 }

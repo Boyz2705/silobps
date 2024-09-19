@@ -7,6 +7,8 @@
     <title>Sibook</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/cssku.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <!-- navbar -->
@@ -69,9 +71,9 @@
         <p class="fs-1 fw-semibold">
           SiBook BPS SURABAYA
         </p>
-        <p class="d-none d-md-block fw-normal">
+        {{-- <p class="d-none d-md-block fw-normal">
           Mari kita catat logbookmu
-        </p>
+        </p> --}}
         <a><button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#appointmentModal">Buat Logbook</button></a>
         </div>
       </div>
