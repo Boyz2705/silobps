@@ -27,6 +27,9 @@
             <a class="nav-link" href="/#about">About Us</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/myapp">Logbookku</a>
+          </li>
+          <li class="nav-item">
             @if (Route::has('login'))
                   <div class="hidden fixed top-0 right-0 sm:block">
                       @auth
@@ -36,7 +39,7 @@
                           </a>
 
                           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="/myapp">My Appointement</a>
+                              <a class="dropdown-item" href="/myapp">My Logbook</a>
                               <a class="dropdown-item" href="{{ route('user.edit', Auth::user()->id) }}">My Profile</a>
                               <a class="dropdown-item" href="{{ route('logout') }}"
                               onclick="event.preventDefault();
