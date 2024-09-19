@@ -17,16 +17,15 @@
           <a href="/app-recap" target="_blank" class="btn btn-success mb-3">Recap all data</a>
           <table class="table table-bordered" id="datatablesSimple">
           <tr>
-          <th>App_ID</th>
-          <th>User</th>
-          <th>Services</th>
-          <th>Date</th>
-          <th>Session</th>
-          <th>Pet</th>
-          <th>Clinic</th>
-          <th>Detail</th>
-          <th>Bill</th>
-          <th>Status</th>
+            <th>Log_ID</th>
+            <th>User</th>
+            <th>Pembina</th>
+            <th>Date</th>
+            {{-- <th>Session</th> --}}
+            <th>Petugas</th>
+            <th>Kampus</th>
+            <th>Detail</th>
+            {{-- <th>Status</th> --}}
           <th style="width: 150px">Action</th>
           </tr>
           @foreach ($apps as $app)
@@ -35,19 +34,19 @@
           <td>{{ $app->user['name'] }}</td>
           <td>{{ $app->service['services_name'] }}</td>
           <td>{{ $app->app_date }}</td>
-          <td>{{ $app->session['time'] }}</td>
+          {{-- <td>{{ $app->session['time'] }}</td> --}}
           <td>{{ $app->pet['pet_name'] }}</td>
           <td>{{ $app->clinic['clinic_name'] }}</td>
           <td>{{ $app->detail }}</td>
-          <td>${{ $app->bill }}</td>
-          <td>{{ $app->status }}</td>
+          {{-- <td>${{ $app->bill }}</td> --}}
+          {{-- <td>{{ $app->status }}</td> --}}
           <td>
               <a class="btn btn-primary mt-1" href="appedit/{{ $app->id }}">Edit</a>
               <button type="button" class="btn btn-danger mt-1" data-bs-toggle="modal" data-bs-target="#delmodal">Delete</button>
               @foreach($receipts->where('app_id',$app->id) as $receipt)
               @if($receipt->app_id===$app->id)
-              <a href="storage/{{ $receipt->receipt }}" target="_blank" class="btn btn-warning mt-1" style="width: 130px">Receipt</a>
-              <a href="invoice/{{ $app->id }}" target="_blank" class="btn btn-success mt-1" style="width: 130px">Invoice</a>
+              {{-- <a href="storage/{{ $receipt->receipt }}" target="_blank" class="btn btn-warning mt-1" style="width: 130px">Receipt</a>
+              <a href="invoice/{{ $app->id }}" target="_blank" class="btn btn-success mt-1" style="width: 130px">Invoice</a> --}}
               @endif
               @endforeach
           </td>

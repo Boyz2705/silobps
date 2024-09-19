@@ -65,13 +65,13 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/adm-app">Appointment Table</a>
-                                <a class="nav-link" href="/adm-services">Services Table</a>
-                                <a class="nav-link" href="/adm-clinic">Clinic Table</a>
-                                <a class="nav-link" href="/adm-user">User Table</a>
-                                <a class="nav-link" href="/adm-pet">Pet Table</a>
-                                <a class="nav-link" href="/adm-gallery">Gallery Table</a>
-                                <a class="nav-link" href="/adm-session">Session Table</a>
+                                <a class="nav-link" href="/adm-app">Appointment </a>
+                                <a class="nav-link" href="/adm-services">Pembina</a>
+                                <a class="nav-link" href="/adm-clinic">Kampus</a>
+                                <a class="nav-link" href="/adm-user">User</a>
+                                <a class="nav-link" href="/adm-pet">Petugas</a>
+                                {{-- <a class="nav-link" href="/adm-gallery">Gallery Table</a>
+                                <a class="nav-link" href="/adm-session">Session Table</a> --}}
                             </nav>
                         </div>
                     </div>

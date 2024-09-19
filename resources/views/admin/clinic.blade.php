@@ -1,15 +1,15 @@
 @extends('admin.admin_assets')
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Manage Clinic Table</h1>
+    <h1 class="mt-4">Manage Kampus</h1>
     <div class="card mt-4 mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
-            Clinic Table
+            Tabel Kampus
         </div>
         <div class="card-body">
             <div class="pull-right mb-3">
-                <a class="btn btn-success" href="/adm-cliniccreate"> Add to Clinic<a>
+                <a class="btn btn-success" href="/adm-cliniccreate"> Tambah Kampus<a>
             </div>
             @if(session('status'))
             <div class="alert alert-success mb-1 mt-1">
@@ -20,10 +20,10 @@
             @endif
                 <table class="table table-bordered" id="datatablesSimple">
                 <tr>
-                <th>Clinic_ID</th>
-                <th>Clinic Name</th>
-                <th>Clinic Address</th>
-                <th>Clinic Image</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Image</th>
 
                 <th width="280px">Action</th>
                 </tr>
