@@ -13,7 +13,7 @@
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top p-3">
     <div class="container">
-        <a href="/"><img class="img-fluid" src="{{ URL::to('/assets/petclick_logo-light.png') }}" style="width: 100px"></a>
+        <a href="/"><img class="img-fluid" src="{{ URL::to('/assets/sibooklogo.png') }}" style="width: 100px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,18 +24,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/#about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/#services">Services</a>
-          </li>
-          <li class="nav-tem">
-            <a class="nav-link" href="/#gallery">Gallery</a>
-          </li>
-          <li class="nav-tem">
-            <a class="nav-link" href="/#location">Locations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/#contact">Contact</a>
           </li>
           <li class="nav-item">
             @if (Route::has('login'))
@@ -72,7 +60,7 @@
   </nav>
 <main>
     @yield('content')
-</main>
+{{-- </main>
   <!-- footer -->
     <footer class="container-fluid pt-4 pb-4" style="background: #212529;">
       <div class="container">
@@ -84,7 +72,7 @@
           <a href="https://github.com/" target="_blank"><span class="iconify" data-icon="fa-brands:github-square" style="color: white;" data-width="37" data-height="37"></span></a>
         </div>
         </div>
-    </footer>
+    </footer> --}}
   <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('https://code.iconify.design/2/2.2.1/iconify.min.js') }}"></script>
   <script src="{{ asset('assets/js/datatables-simple-demo.js') }}"></script>

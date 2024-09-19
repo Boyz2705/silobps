@@ -32,7 +32,7 @@ class AppointmentController extends Controller
     public function myapp()
     {
         $rec = payment::all();
-        $appointment = Appointment::with(['service', 'session', 'clinic'])->get();
+        $appointment = Appointment::with(['service', 'session', 'clinic','pet'])->get();
         return view('myappointment', [
             "appointments" => $appointment,
             "rec" => $rec
