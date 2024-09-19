@@ -48,15 +48,15 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>App _ID</th>
+                                        <th>Log_ID</th>
                                         <th>User</th>
-                                        <th>Services</th>
+                                        <th>Pembina</th>
                                         <th>Date</th>
-                                        <th>Session</th>
-                                        <th>Pet</th>
-                                        <th>Clinic</th>
+                                        {{-- <th>Session</th> --}}
+                                        <th>Petugas</th>
+                                        <th>Kampus</th>
                                         <th>Detail</th>
-                                        <th>Status</th>
+                                        {{-- <th>Status</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,11 +66,11 @@
                                         <td>{{ $app->user['name'] }}</td>
                                         <td>{{ $app->service['services_name'] }}</td>
                                         <td>{{ $app->app_date }}</td>
-                                        <td>{{ $app->session['time'] }}</td>
+                                        {{-- <td>{{ $app->session['time'] }}</td> --}}
                                         <td>{{ $app->pet['pet_name'] }}</td>
                                         <td>{{ $app->clinic['clinic_name'] }}</td>
                                         <td>{{ $app->detail }}</td>
-                                        <td>{{ $app->status }}</td>
+                                        {{-- <td>{{ $app->status }}</td> --}}
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -88,15 +88,15 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>App _ID</th>
+                                        <th>Log_ID</th>
                                         <th>User</th>
-                                        <th>Services</th>
+                                        <th>Pembina</th>
                                         <th>Date</th>
-                                        <th>Session</th>
-                                        <th>Pet</th>
-                                        <th>Clinic</th>
+                                        {{-- <th>Session</th> --}}
+                                        <th>Petugas</th>
+                                        <th>Kampus</th>
                                         <th>Detail</th>
-                                        <th>Status</th>
+                                        {{-- <th>Status</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -106,11 +106,11 @@
                                         <td>{{ $app->user['name'] }}</td>
                                         <td>{{ $app->service['services_name'] }}</td>
                                         <td>{{ $app->app_date }}</td>
-                                        <td>{{ $app->session['time'] }}</td>
+                                        {{-- <td>{{ $app->session['time'] }}</td> --}}
                                         <td>{{ $app->pet['pet_name'] }}</td>
                                         <td>{{ $app->clinic['clinic_name'] }}</td>
                                         <td>{{ $app->detail }}</td>
-                                        <td>{{ $app->status }}</td>
+                                        {{-- <td>{{ $app->status }}</td> --}}
                                     </tr>
                                     @endforeach
                                 </tbody>

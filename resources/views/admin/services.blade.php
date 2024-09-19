@@ -1,7 +1,7 @@
 @extends('admin.admin_assets')
 @section('content')
  <div class="container-fluid px-4">
-    <h1 class="mt-4">Manage Services Table</h1>
+    <h1 class="mt-4">Pembina</h1>
     {{-- <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Dashboard</li>
     </ol> --}}
@@ -25,8 +25,8 @@
 <tr>
 <th>Services ID</th>
 <th>Services Name</th>
-<th>Services Price</th>
-<th>Routes</th>
+{{-- <th>Services Price</th>
+<th>Routes</th> --}}
 
 <th width="280px">Action</th>
 </tr>
@@ -34,8 +34,8 @@
 <tr>
 <td>{{ $service->id }}</td>
 <td>{{ $service->services_name }}</td>
-<td>{{ $service->price }}</td>
-<td>{{ $service->srv_routes }}</td>
+{{-- <td>{{ $service->price }}</td>
+<td>{{ $service->srv_routes }}</td> --}}
 <td>
     <a class="btn btn-primary" href="servicesedit/{{ $service->id }}">Edit</a>
     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delmodal">Delete</button>

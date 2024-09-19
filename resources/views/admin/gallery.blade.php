@@ -1,4 +1,4 @@
-@extends('admin.admin_assets')
+{{-- @extends('admin.admin_assets')
 @section('content')
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Manage Gallery Table</h1>
@@ -65,4 +65,4 @@
     </div>
   </div>
   
-@endsection
+@endsection --}}

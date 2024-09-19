@@ -1,7 +1,7 @@
 @extends('admin.admin_assets')
 @section('content')
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Manage Pet Table</h1>
+                    <h1 class="mt-4">Petugas</h1>
                     <div class="card mt-4 mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
@@ -9,7 +9,7 @@
                         </div>
                         <div class="card-body">
                             <div class="pull-right mb-3">
-                                <a class="btn btn-success" href="/adm-petcreate"> Create New Pet<a>
+                                <a class="btn btn-success" href="/adm-petcreate"> Tambah Petugas<a>
                             </div>
                             @if(session('status'))
                             <div class="alert alert-success mb-1 mt-1">
@@ -20,8 +20,8 @@
                             @endif
         <table class="table table-bordered" id="datatablesSimple">
             <tr>
-            <th>Pet_ID</th>
-            <th>Pet_Name</th>
+            <th>ID</th>
+            <th>Name</th>
 
             <th width="280px">Action</th>
             </tr>
