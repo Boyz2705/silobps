@@ -25,6 +25,8 @@ class User extends Authenticatable
         'city',
         'address',
         'notelp',
+        'status',
+        'petugas'
     ];
 
     /**

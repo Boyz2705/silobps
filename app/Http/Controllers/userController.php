@@ -58,6 +58,8 @@ class userController extends Controller
                 'notelp' => $request->number,
                 'city' => $request->city,
                 'role' => $request->role,
+                'status' => $request->status,
+                'petugas' => $request->petugas,
             ]);
             return redirect('/adm-user')->with('status', 'New Data Added to Database');
         }
@@ -72,6 +74,8 @@ class userController extends Controller
         $user->address = $request->address;
         $user->notelp = $request->number;
         $user->city = $request->city;
+        $user->status = $request->status;
+        $user->petugas = $request->petugas;
         $user->save();
         return redirect('home');
     }

@@ -1,7 +1,7 @@
 @extends('admin.admin_assets')
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Manage User Table</h1>
+    <h1 class="mt-4">Manage User Status Table</h1>
     <div class="card mt-4 mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
