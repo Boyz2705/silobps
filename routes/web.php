@@ -231,4 +231,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/appedit/{id}', [AppointmentController::class, "update"]);
     Route::get('/adm-app', [AppointmentController::class, "index"]);
     Route::get('/app-recap', [AppointmentController::class, "recap"]);
+    Route::get('/adm-app1', [AppointmentController::class, 'date'])->name('logbook.date');
+
 });

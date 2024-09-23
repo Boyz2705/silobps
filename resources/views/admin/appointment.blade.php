@@ -2,6 +2,24 @@
 @section('content')
 <div class="container-fluid px-4">
     <h1 class="mt-4">Manage Logbook Table</h1>
+    <!-- Filter Tanggal -->
+    <form method="GET" action="{{ route('logbook.date') }}" class="mb-4">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="start_date" class="form-label">Start Date</label>
+                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ request('start_date') }}">
+            </div>
+            <div class="col-md-4">
+                <label for="end_date" class="form-label">End Date</label>
+                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ request('end_date') }}">
+            </div>
+            <div class="col-md-4 align-self-end">
+                <button type="submit" class="btn btn-primary mt-2">Filter</button>
+                <a href="{{ route('logbook.date') }}" class="btn btn-secondary mt-2">Reset</a>
+            </div>
+        </div>
+    </form>
+
     <div class="card mt-4 mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>

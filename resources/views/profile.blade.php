@@ -28,6 +28,10 @@
                   <input class="form-control" name="number" value="{{ auth::user()->notelp }}">
                 </div>
                 <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Kampus</label>
+                    <input class="form-control" name="petugas" value="{{ auth::user()->petugas }}">
+                </div>
+                <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Jurusan</label>
                     <input class="form-control" name="address" value="{{ auth::user()->address }}">
                 </div>
@@ -43,10 +47,7 @@
                     </select>
                 </div>
 
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Petugas</label>
-                    <input class="form-control" name="petugas" value="{{ auth::user()->petugas }}">
-                </div>
+
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
