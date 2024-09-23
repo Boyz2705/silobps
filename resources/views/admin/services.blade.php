@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
             <div class="pull-right mb-3">
-                <a class="btn btn-success" href="/adm-servicescreate"> Create New Services<a>
+                <a class="btn btn-success" href="/adm-servicescreate"> Create New Pembina<a>
             </div>
             @if(session('status'))
             <div class="alert alert-success mb-1 mt-1">
@@ -23,8 +23,8 @@
             @endif
 <table class="table table-bordered" id="datatablesSimple">
 <tr>
-<th>Services ID</th>
-<th>Services Name</th>
+<th>Pembina ID</th>
+<th>Pembina Name</th>
 {{-- <th>Services Price</th>
 <th>Routes</th> --}}
 

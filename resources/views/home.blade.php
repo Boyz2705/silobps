@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/cssku.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -68,9 +69,9 @@
   <div id="banner" class="parallax d-flex justify-content-center align-items-center">
     <div class="container banner-content col-lg-6 position-absolute top-50 start-50 translate-middle">
       <div class="text-center">
-        <p class="fs-1 fw-semibold">
+        {{-- <p class="fs-1 fw-semibold">
           SiBook BPS SURABAYA
-        </p>
+        </p> --}}
         {{-- <p class="d-none d-md-block fw-normal">
           Mari kita catat logbookmu
         </p> --}}
@@ -117,7 +118,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <label class="form-label">Select Services</label>
+            <label class="form-label">Select Pembina</label>
             <select name="service" class="form-select" aria-label="Default select example">
             @foreach($services as $service)
             <option value="{{ $service->id }}">{{ $service->services_name }}</option>
@@ -125,7 +126,7 @@
             </select>
           </div>
             <div class="mb-3">
-              <label class="form-label">Appointment Date</label>
+              <label class="form-label">Logbook Date</label>
               <input name="app_date" type="date" class="form-control" required>
             </div>
             <div class="mb-3">
@@ -137,7 +138,7 @@
           </select>
             </div>
             <div class="mb-3">
-              <label class="form-label">Select Branch</label>
+              <label class="form-label">Select Kampus</label>
               <select name="branch" class="form-select" aria-label="Default select example">
                 @foreach($clinics as $clinic)
               <option value="{{ $clinic->id }}">{{ $clinic->clinic_name }}</option>
@@ -145,7 +146,7 @@
             </select>
             </div>
             <div class="mb-3">
-            <label class="form-label">Pet</label>
+            <label class="form-label">Select Petugas</label>
             <select name="pet_id" class="form-select" aria-label="Default select example">
               @foreach($pets as $pet)
             <option value="{{ $pet->id }}">{{ $pet->pet_name }}</option>
@@ -153,10 +154,10 @@
           </select>
             </div>
             <div class="mb-3">
-            <label class="form-label">Current Complaint</label>
+            <label class="form-label">Nama Kegiatan</label>
               <textarea name="detail" type="text" class="form-control" cols="30" rows="10" required></textarea>
               {{-- <input name="detail" type="text" class="form-control"> --}}
-              <div class="form-text">Describe Your Pet's Complaint</div>
+              <div class="form-text">Deskripsikan kegiatanmu</div>
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
@@ -182,7 +183,10 @@
         <p>SIBook BPS adalah sebuah sistem logbook inovatif yang dikembangkan oleh Mahasiswa Magang Badan Pusat Statistik Surabaya untuk memudahkan proses pencatatan dan pengelolaan logbook. Sistem ini dirancang untuk memfasilitasi pencatatan kegiatan harian secara digital, sehingga meminimalisir penggunaan kertas dan meningkatkan efisiensi serta akurasi dalam pelaporan kegiatan.</p>
     </div>
   </div>
-  <div style="text-align: center; font-size: 12px; margin-top: 20px;">
+<div class="marquee">
+    <span class="marquee-text">Selamat datang pada Sistem Logbook BPS Surabaya </span>
+</div>
+<div style="text-align: center; font-size: 12px; margin-top: 20px;">
     © 2024 by Pram, Rifky , Febry.
 </div>
   <script src="js/bootstrap.bundle.min.js"></script>

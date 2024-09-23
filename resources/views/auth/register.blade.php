@@ -4,11 +4,11 @@
     <div class="row justify-content-center">
         <div class="col-md-6 text-center my-4">
             {{-- <h2 class="heading-section">Login #04</h2> --}}
-              <a href="/"><img class="img-fluid" src="{{ URL::to('/assets/petclick_logo-dark.png') }}" style="width: 200px"></a>
+              <a href="/"><img class="img-fluid" src="{{ URL::to('/assets/sibooklogo.png') }}" style="width: 200px"></a>
         </div>
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register to PetClick') }}</div>
+                <div class="card-header">{{ __('Register to SiBook') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -76,5 +76,6 @@
             </div>
         </div>
     </div>
+
 </div>
 @endsection

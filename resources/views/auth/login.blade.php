@@ -17,13 +17,13 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center my-4">
 					{{-- <h2 class="heading-section">Login #04</h2> --}}
-          			<a href="/"><img class="img-fluid" src="{{ URL::to('/assets/bpslogo.png') }}" style="width: 200px"></a>
+          			<a href="/"><img class="img-fluid" src="{{ URL::to('/assets/bpslogo.png') }}" style="width: 125px"></a>
 				</div>
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-md-12 col-lg-10">
+				<div class="col-md-10 col-lg-12">
 					<div class="wrap d-md-flex">
-						<div class="img" style="background-image: url('https://images.unsplash.com/photo-1726664963492-a42c8034617e?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+						<div class="img" style="background-image: url('https://images.unsplash.com/photo-1726733542771-07731a21d58f?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); ">
 			      </div>
 						<div class="login-wrap p-4 p-md-5">
 			      	<div class="d-flex">
@@ -83,7 +83,7 @@
 		            </div>
 		          </form>
 				  @if (Route::has('register'))
-		          <p class="text-center">Not a member? <a data-toggle="tab" href="{{ route('register') }}" style="color: #28a745">{{ __('Register') }}</a></p>
+		          <p class="text-center">Not a member? <a data-toggle="tab" href="{{ route('register') }}" style="color: #0055ff">{{ __('Register') }}</a></p>
 
 				  {{-- <li class="nav-item">
 					  <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -96,6 +96,7 @@
 			</div>
 		</div>
 	</section>
+
     {{-- <div class="container-fluid centering">
         <div class="card p-3" style="width: 18rem; ">
             <form>

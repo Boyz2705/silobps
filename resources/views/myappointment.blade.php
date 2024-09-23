@@ -52,4 +52,18 @@ use Illuminate\Support\Facades\Auth;
     © 2024 by Pram, Rifky , Febry.
 </div>
 </div>
+<div>
+    <div class="marquee">
+        <span class="marquee-text"></span>
+        <div id="pixel-character"></div>
+    </div>
+    <div class="marquee">
+        <span class="marquee-text"></span>
+        <div id="pixel-character2"></div>
+    </div>
+    <div class="marquee">
+        <span class="marquee-text"></span>
+        <div id="pixel-character3"></div>
+    </div>
+</div>
 @endsection

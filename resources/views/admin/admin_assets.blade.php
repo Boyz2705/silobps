@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Petclick Admin</title>
+    <title>Logbook Admin</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css2/styles-admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cssku.css') }}">
@@ -16,7 +16,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="/adm"><img class="img-fluid me-3" src="{{ URL::to('/assets/petclick_logo-light.png') }}" style="width: 100px">Admin</a>
+        <a class="navbar-brand ps-3" href="/adm"><img class="img-fluid me-3" src="{{ URL::to('/assets/sibooklogo.png') }}" style="width: 100px">Admin</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -65,7 +65,7 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="/adm-app">Appointment </a>
+                                <a class="nav-link" href="/adm-app">Logbook </a>
                                 <a class="nav-link" href="/adm-services">Pembina</a>
                                 <a class="nav-link" href="/adm-clinic">Kampus</a>
                                 <a class="nav-link" href="/adm-user">User</a>

@@ -1,7 +1,7 @@
 @extends('admin.admin_assets')
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Manage Appointment Table</h1>
+    <h1 class="mt-4">Manage Logbook Table</h1>
     <div class="card mt-4 mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
@@ -14,7 +14,7 @@
         {{ session('statusdel') }}</div>
         @endif
         <div class="card-body">
-          <a href="/app-recap" target="_blank" class="btn btn-success mb-3">Recap all data</a>
+          {{-- <a href="/app-recap" target="_blank" class="btn btn-success mb-3">Recap all data</a> --}}
           <table class="table table-bordered" id="datatablesSimple">
           <tr>
             <th>Log_ID</th>
