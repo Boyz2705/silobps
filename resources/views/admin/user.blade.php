@@ -23,27 +23,34 @@
                 <th>User_ID</th>
                 <th>User Name</th>
                 <th>User Email</th>
-                <th>User Phone Number</th>
+                {{-- <th>User Phone Number</th> --}}
+
                 <th>User Role</th>
-                <th>User Address</th>
+                <th>Jurusan</th>
+                <th>Pembina</th>
+                <th>Kampus</th>
 
 
                 <th width="280px">Action</th>
                 </tr>
                 @foreach ($users as $user)
+                @if ($user->id != 404)
                 <tr>
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->notelp }}</td>
+                {{-- <td>{{ $user->notelp }}</td> --}}
                 <td>{{ $user->role }}</td>
                 <td>{{ $user->address }}</td>
+                <td>{{ $user->city}}</td>
+                <td>{{ $user->petugas}}</td>
                 <td>
                     <a class="btn btn-primary" href="useredit/{{ $user->id }}">Edit</a>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delmodal">Delete</button>
                 </td>
                 </td>
                 </tr>
+                @endif
                 @endforeach
                 </table>
         </div>

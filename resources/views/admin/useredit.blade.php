@@ -47,8 +47,8 @@
                                             @enderror
                                         </div>
                                         <div class="form-group mt-2">
-                                            <strong >User City:</strong>
-                                                <input type="text" name="city" value="{{ $user->city}}" class="form-control mt-2" placeholder="User City">
+                                            <strong >Pemnina:</strong>
+                                                <input type="text" name="city" value="{{ $user->city}}" class="form-control mt-2" placeholder="Pembin">
                                             @error('name')
                                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                             @enderror
@@ -63,6 +63,16 @@
                                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                             @enderror
                                         </div>
+                                        {{-- <div class="form-group mt-2">
+                                            <strong >User Status:</strong>
+                                            <select name="role" id="" class="form-select mt-2">
+                                                <option value="customer">Customer</option>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                            @error('name')
+                                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                            @enderror
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
