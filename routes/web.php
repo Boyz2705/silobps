@@ -159,6 +159,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('admin.user');
     });
 
+    Route::get('/adm-status', function () {
+        return view('admin.status');
+    });
+
     Route::get('/adm-usercreate', function () {
         return view('admin.usercreate');
     });
@@ -212,6 +216,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/session_create', [SessionController::class, "store"]);
 
     Route::get('/adm-user', [userController::class, "index"]);
+    Route::get('/adm-status', [userController::class, "status"]);
     Route::get('/useredit/{id}', [userController::class, "editadm"]);
     Route::put('/useredit/{id}', [userController::class, "updateadm"]);
     Route::post('/user_create', [userController::class, "store"]);

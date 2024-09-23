@@ -18,6 +18,13 @@ class userController extends Controller
         ]);
     }
 
+    public function status()
+    {
+        return view('admin.status', [
+            "users" => User::all()
+        ]);
+    }
+
     public function admin()
     {
         $app = Appointment::with(['user', 'pet', 'service', 'session', 'clinic'])->get();
