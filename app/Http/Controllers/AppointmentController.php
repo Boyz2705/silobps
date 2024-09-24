@@ -32,25 +32,20 @@ class AppointmentController extends Controller
     }
     public function date(Request $request)
     {
-    $query = Appointment::query(); // Model App yang digunakan untuk logbook
+    $query = Appointment::query();
+        $startDate = $request->start_date; // e.g., 2024-09-23
+        $endDate = $request->end_date; // Model App yang digunakan untuk logbook
     $receipt = payment::all();
-        $app = Appointment::with(['user', 'pet', 'service', 'session', 'clinic'])->get();
+        $app = Appointment::with(['user', 'pet', 'service', 'session', 'clinic'])
+                ->whereBetween('app_date', [$startDate, $endDate])
+                ->get();
         return view('admin.appointment', [
             "apps" => $app,
             "receipts" => $receipt
         ]);
-    // Filter berdasarkan rentang tanggal tanpa menggunakan Carbon
-    if ($request->has('start_date') && $request->has('end_date')) {
-        // Ambil tanggal dari request, pastikan format sudah benar
-        $startDate = $request->start_date; // e.g., 2024-09-23
-        $endDate = $request->end_date; // e.g., 2024-09-23
-
-        // Query whereBetween langsung menggunakan format string Y-m-d
-        $query->whereBetween('app_date', [$startDate, $endDate]);
-    }
 
     // Ambil data yang sudah difilter
-    $apps = $query->get();
+    $apps = $app->get();
 
     return view('admin.appointment', compact('apps'));
     }
