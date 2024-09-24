@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-4 align-self-end">
                 <button type="submit" class="btn btn-primary mt-2">Filter</button>
-                <a href="{{ route('logbook.date') }}" class="btn btn-secondary mt-2">Reset</a>
+                <a href="/adm-app" class="btn btn-secondary mt-2">Reset</a>
             </div>
         </div>
     </form>

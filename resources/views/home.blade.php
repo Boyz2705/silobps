@@ -29,9 +29,12 @@
           <li class="nav-item">
             <a class="nav-link" href="#about">About Us</a>
           </li>
+          @guest
+          @else
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/myapp">Logbookku</a>
           </li>
+          @endguest
           <li class="nav-item">
             @if (Route::has('login'))
                   <div class="hidden fixed top-0 right-0 sm:block">
