@@ -39,6 +39,11 @@ class AppointmentController extends Controller
         $app = Appointment::with(['user', 'pet', 'service', 'session', 'clinic'])
                 ->whereBetween('app_date', [$startDate, $endDate])
                 ->get();
+        
+        if ($app->isEmpty()) {
+            throw new \Exception('No appointments found within the specified date range.');
+        }
+
         return view('admin.appointment', [
             "apps" => $app,
             "receipts" => $receipt
