@@ -35,13 +35,13 @@ class AppointmentController extends Controller
     $query = Appointment::query();
         $startDate = $request->start_date; // e.g., 2024-09-23
         $endDate = $request->end_date; // Model App yang digunakan untuk logbook
-    $receipt = payment::all();
+        $receipt = payment::all();
         $app = Appointment::with(['user', 'pet', 'service', 'session', 'clinic'])
                 ->whereBetween('app_date', [$startDate, $endDate])
                 ->get();
         
         if ($app->isEmpty()) {
-            throw new \Exception('No appointments found within the specified date range.');
+            return redirect()->back()->with('alert', 'No appointments found for the selected dates.');
         }
 
         return view('admin.appointment', [
