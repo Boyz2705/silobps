@@ -12,6 +12,24 @@ use Illuminate\Support\Facades\Auth;
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
     </div>
+    <div>
+    <form method="GET" action="{{ route('logbook.date2') }}" class="mb-4">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="start_date" class="form-label">Start Date</label>
+                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ request('start_date') }}">
+            </div>
+            <div class="col-md-4">
+                <label for="end_date" class="form-label">End Date</label>
+                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ request('end_date') }}">
+            </div>
+            <div class="col-md-4 align-self-end">
+                <button type="submit" class="btn btn-primary mt-2">Filter</button>
+                <a href="/myapp" class="btn btn-secondary mt-2">Reset</a>
+            </div>
+        </div>
+    </form>
+</div>
     <div class="card-body">
         @if(session('status'))
         <div class="alert alert-success mb-3 mt-1">
@@ -67,3 +85,8 @@ use Illuminate\Support\Facades\Auth;
     </div>
 </div>
 @endsection
+@if(session('alert'))
+    <script>
+        alert("{{ session('alert') }}");
+    </script>
+@endif

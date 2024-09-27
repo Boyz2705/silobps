@@ -23,7 +23,10 @@ class AppointmentController extends Controller
     public function index()
     {
         $receipt = payment::all();
-        $app = Appointment::with(['user', 'pet', 'service', 'session', 'clinic'])->get();
+        $app = Appointment::with(['user', 'pet', 'service', 'session', 'clinic'])
+                ->orderBy('app_date', 'desc')
+                ->get();
+
         return view('admin.appointment', [
             "apps" => $app,
             "receipts" => $receipt
@@ -39,9 +42,9 @@ class AppointmentController extends Controller
         $app = Appointment::with(['user', 'pet', 'service', 'session', 'clinic'])
                 ->whereBetween('app_date', [$startDate, $endDate])
                 ->get();
-        
+
         if ($app->isEmpty()) {
-            return redirect()->back()->with('alert', 'No appointments found for the selected dates.');
+            return redirect()->back()->with('alert', 'Tidak ada logbook dalam rentang tanggal.');
         }
 
         return view('admin.appointment', [
@@ -55,11 +58,37 @@ class AppointmentController extends Controller
     return view('admin.appointment', compact('apps'));
     }
 
+    public function date2(Request $request)
+    {
+    $query = Appointment::query();
+        $startDate = $request->start_date; // e.g., 2024-09-23
+        $endDate = $request->end_date; // Model App yang digunakan untuk logbook
+        $rec = payment::all();
+        $appointment = Appointment::with(['service', 'session', 'clinic','pet'])
+                        ->whereBetween('app_date', [$startDate, $endDate])
+                        ->get();
+
+        if ($appointment->isEmpty()) {
+            return redirect()->back()->with('alert', 'Tidak ada Logbook dalam rentang tanggal');
+        }
+
+        return view('myappointment', [
+            "appointments" => $appointment,
+            "rec" => $rec
+        ]);
+
+    // Ambil data yang sudah difilter
+    $appointments = $appointment->get();
+
+    return view('myappointment', compact('appointments'));
+    }
 
     public function myapp()
     {
         $rec = payment::all();
-        $appointment = Appointment::with(['service', 'session', 'clinic','pet'])->get();
+        $appointment = Appointment::with(['service', 'session', 'clinic','pet'])
+                        ->orderBy('app_date', 'desc')
+                        ->get();
         return view('myappointment', [
             "appointments" => $appointment,
             "rec" => $rec
