@@ -158,9 +158,8 @@
           </select>
             </div>
             <div class="mb-3">
-            <label class="form-label">Nama Kegiatan</label>
-              <textarea name="detail" type="text" class="form-control" cols="30" rows="10" required></textarea>
-              {{-- <input name="detail" type="text" class="form-control"> --}}
+              <label class="form-label">Nama Kegiatan</label>
+              <textarea name="detail" type="text" class="form-control" maxlength="255" required></textarea>
               <div class="form-text">Deskripsikan kegiatanmu</div>
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
