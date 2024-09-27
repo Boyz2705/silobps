@@ -152,8 +152,8 @@
 
 /* Pixel character */
 #pixel-character {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     background-image: url('https://i.pinimg.com/originals/85/93/91/85939126aeb7eb1165dbd17b7a968433.gif'); /* Ganti dengan sprite gambar karakter orang */
     background-size: cover;
     position: absolute;
@@ -165,8 +165,8 @@
     margin-top: 50px;
 }
 #pixel-character2 {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     background-image: url('https://images.squarespace-cdn.com/content/v1/5b0c2660297114545512fd73/1527541417594-LC91I0KCFBDPVU5F6H58/babu+walk+left.gif?format=original'); /* Ganti dengan sprite gambar karakter orang */
     background-size: cover;
     position: absolute;
@@ -178,8 +178,8 @@
     margin-top: 50px;
 }
 #pixel-character3 {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     background-image: url('https://art.pixilart.com/26455f6ebac1226.gif'); /* Ganti dengan sprite gambar karakter orang */
     background-size: cover;
     position: absolute;

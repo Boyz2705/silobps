@@ -9,9 +9,13 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css2/styles-admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cssku.css') }}">
+
+    <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css">
-    <script src="{{ asset('https://use.fontawesome.com/releases/v6.1.0/js/all.js') }}" crossorigin="anonymous"></script>
+
+    <!-- FontAwesome -->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 @if (Route::has('login'))
 <body class="sb-nav-fixed">
@@ -104,12 +108,24 @@
         </div>
     </div>
     @endif
-    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.js') }}"></script>
-    {{-- <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js') }}" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/demo/chart-bar-demo.js') }}assets/demo/chart-area-demo.js"></script>
-    <script src="{{ asset('assets/demo/chart-bar-demo.js') }}"></script> --}}
-    <script src="{{ asset('https://cdn.jsdelivr.net/npm/simple-datatables@latest') }}" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/js/datatables-simple-demo.js') }}"></script>
+   <!-- Bootstrap JS -->
+   <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+
+   <!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+   <!-- DataTables JS -->
+   <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+   <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
+   <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.flash.min.js"></script>
+
+   <!-- Inisialisasi DataTables -->
+   <script>
+       $(document).ready(function() {
+           $('#datatablesSimple').DataTable({
+               "pagingType": "full_numbers"// Kolom ke-4 untuk pengurutan berdasarkan tanggal
+           });
+       });
+   </script>
 </body>
 </html>
