@@ -123,7 +123,8 @@
    <script>
        $(document).ready(function() {
            $('#datatablesSimple').DataTable({
-               "pagingType": "full_numbers"// Kolom ke-4 untuk pengurutan berdasarkan tanggal
+               "pagingType": "full_numbers",
+               "order": [[ 3, "desc" ]]// Kolom ke-4 untuk pengurutan berdasarkan tanggal
            });
        });
    </script>

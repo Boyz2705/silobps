@@ -6,12 +6,9 @@
     <div class="card mt-4 mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>
-            User Table
+            Status Table
         </div>
         <div class="card-body">
-            <div class="pull-right mb-3">
-                <a class="btn btn-success" href="/adm-usercreate">Add to User</a>
-            </div>
             @if(session('status'))
                 <div class="alert alert-success mb-1 mt-1">
                     {{ session('status') }}

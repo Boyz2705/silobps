@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\ServiceController;
