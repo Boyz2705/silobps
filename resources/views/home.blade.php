@@ -159,7 +159,7 @@
             </div>
             <div class="mb-3">
               <label class="form-label">Nama Kegiatan</label>
-              <textarea name="detail" type="text" class="form-control" maxlength="255" required></textarea>
+              <textarea name="detail" type="text" class="form-control" maxlength="55" required></textarea>
               <div class="form-text">Deskripsikan kegiatanmu</div>
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
