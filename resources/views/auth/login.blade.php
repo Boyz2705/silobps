@@ -57,13 +57,13 @@
 		            <div class="form-group">
 		            	<button type="submit" class="btn-block btn btn-success rounded px-3">{{ __('Login') }}</button>
 		            </div>
-					<div class="centering">
+					{{-- <div class="centering">
 						@if (Route::has('password.request'))
 						<a class="btn btn-link" style="color: black;" href="{{ route('password.request') }}">
 							{{ __('Forgot Your Password?') }}
 						</a>
 						@endif
-					</div>
+					</div> --}}
 		            <div class="form-group d-md-flex">
 						<div class="form-check w-50 text-left my-3">
 							<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

@@ -35,8 +35,8 @@
                             <tr class="{{ $user->status == 0 ? 'bg-success text-white' : 'bg-danger text-white' }}">
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->kampus }}</td>
-                                <td>{{ $user->jurusan }}</td>
+                                <td>{{ $user->petugas }}</td>
+                                <td>{{ $user->address }}</td>
                                 <td>{{ $user->status == 0 ? 'Available' : 'Unavailable' }}</td>
                             </tr>
 
