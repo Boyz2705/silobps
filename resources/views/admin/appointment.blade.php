@@ -43,7 +43,6 @@
                     <th>Petugas</th>
                     <th>Kampus</th>
                     <th>Detail</th>
-                    <th style="width: 150px">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,11 +55,6 @@
                     <td>{{ $app->pet['pet_name'] }}</td>
                     <td>{{ $app->clinic['clinic_name'] }}</td>
                     <td>{{ $app->detail }}</td>
-                    <td>
-                        <a class="btn btn-primary mt-1" href="appedit/{{ $app->id }}">Edit</a>
-                        <button type="button" class="btn btn-danger mt-1" data-bs-toggle="modal" data-bs-target="#delmodal">Delete</button>
-                        {{-- Jika Anda tidak menggunakan receipt, bisa dihapus --}}
-                    </td>
                 </tr>
                 @endforeach
             </tbody>
