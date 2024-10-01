@@ -42,6 +42,7 @@
                     <th>Date</th>
                     <th>Petugas</th>
                     <th>Kampus</th>
+                    <th>Session</th>
                     <th>Detail</th>
                 </tr>
             </thead>
@@ -54,6 +55,7 @@
                     <td>{{ $app->app_date }}</td>
                     <td>{{ $app->pet['pet_name'] }}</td>
                     <td>{{ $app->clinic['clinic_name'] }}</td>
+                    <td>{{ optional($app->session)->time }}</td>
                     <td>{{ $app->detail }}</td>
                 </tr>
                 @endforeach

@@ -40,6 +40,7 @@ use Illuminate\Support\Facades\Auth;
                 <thead>
                     <tr>
                         <th>Date</th>
+                        <th>Session</th>
                         <th>Kampus</th>
                         <th>Pembina</th>
                         <th>Petugas</th>
@@ -50,6 +51,7 @@ use Illuminate\Support\Facades\Auth;
                     @foreach ($appointments->where('user_id', Auth::user()->id) as $appointment)
                     <tr>
                         <td>{{ $appointment->app_date }}</td>
+                        <td>{{$appointment->session['time']}}</td>
                         <td>{{ $appointment->clinic['clinic_name'] }}</td>
                         <td>{{ $appointment->service['services_name'] }}</td>
                         <td>{{ $appointment->pet['pet_name'] }}</td>

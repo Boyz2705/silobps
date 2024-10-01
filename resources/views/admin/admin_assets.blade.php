@@ -79,8 +79,8 @@
                                 <a class="nav-link" href="/adm-clinic">Kampus</a>
                                 <a class="nav-link" href="/adm-user">User</a>
                                 <a class="nav-link" href="/adm-pet">Petugas</a>
-                                {{-- <a class="nav-link" href="/adm-gallery">Gallery Table</a>
-                                <a class="nav-link" href="/adm-session">Session Table</a> --}}
+                                {{-- <a class="nav-link" href="/adm-gallery">Gallery Table</a> --}}
+                                <a class="nav-link" href="/adm-session">Session Table</a>
                             </nav>
                         </div>
                     </div>

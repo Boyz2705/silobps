@@ -24,7 +24,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-10 col-lg-12">
 					<div class="wrap d-md-flex">
-						<div class="img" style="background-image: url('https://images.unsplash.com/photo-1726733542771-07731a21d58f?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); ">
+						<div class="img" style="background-image: url('https://images.unsplash.com/photo-1727677830963-5992bddfe5bf?q=80&w=1792&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); ">
 			      </div>
 						<div class="login-wrap p-4 p-md-5">
 			      	<div class="d-flex">
