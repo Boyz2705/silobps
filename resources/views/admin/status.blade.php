@@ -3,6 +3,13 @@
 @section('content')
 <div class="container-fluid px-4">
     <h1 class="mt-4">Manage User Status Table</h1>
+
+    <!-- Tombol untuk mereset status semua user -->
+    <form action="{{ route('user.resetStatus') }}" method="POST" style="margin-bottom: 20px;">
+        @csrf
+        <button type="submit" class="btn btn-danger">Hanya Pencet ini di Pagi Hari !!</button>
+    </form>
+
     <div class="card mt-4 mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>

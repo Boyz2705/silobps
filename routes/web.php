@@ -92,6 +92,8 @@ Route::put('/profileedit/{id}', [userController::class, "update"]);
 Route::get('/invoice/{id}', [AppointmentController::class, "invoice"]);
 Route::get('/payment/{id}', [AppointmentController::class, "payment"]);
 Route::post('/receipt/{id}', [PaymentController::class, "store"]);
+Route::post('/sibuk-status', [userController::class, 'sibukStatus'])->name('user.resetsibuk');
+Route::post('/sedia-status', [userController::class, 'sediaStatus'])->name('user.resetsedia');
 
 
 // Route::middleware(['auth', 'role:customer'])->group(function () {
@@ -234,5 +236,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/adm-app', [AppointmentController::class, "index"]);
     Route::get('/app-recap', [AppointmentController::class, "recap"]);
     Route::get('/adm-app1', [AppointmentController::class, 'date'])->name('logbook.date');
+    Route::post('/reset-status', [userController::class, 'resetStatus'])->name('user.resetStatus');
+
 
 });

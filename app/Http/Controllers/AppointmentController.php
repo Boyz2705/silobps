@@ -11,6 +11,7 @@ use App\Models\payment;
 use App\Models\Services;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
@@ -139,23 +140,41 @@ class AppointmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $bill = service::findOrFail($request->service);
-        if ($request->isMethod('post')) {
-            Appointment::create([
-                'user_id' => $request->user_id,
-                'app_date' => $request->app_date,
-                'session_id' => $request->session,
-                'clinic_id' => $request->branch,
-                'detail' => $request->detail,
-                'pet_id' => $request->pet_id,
-                'service_id' => $request->service,
-                'bill' => $bill->price,
-            ]);
-            return redirect('/');
+{
+    $bill = Service::findOrFail($request->service);
+    if ($request->isMethod('post')) {
+        $appointment = Appointment::create([
+            'user_id' => $request->user_id,
+            'app_date' => $request->app_date,
+            'session_id' => $request->session,
+            'clinic_id' => $request->branch,
+            'detail' => $request->detail,
+            'pet_id' => $request->pet_id,
+            'service_id' => $request->service,
+            'bill' => $bill->price,
+        ]);
+
+        $user = Auth::user();
+        if ($user instanceof \App\Models\User) {
+            // Pastikan bahwa $user adalah instance dari model User
+            $user->status = 1; // 1 untuk unavailable
+            $user->save();
+        } elseif ($user) {
+            // Jika $user ada tapi bukan instance User model, gunakan User::find()
+            $userModel = \App\Models\User::find($user->id);
+            if ($userModel) {
+                $userModel->status = 1;
+                $userModel->save();
+            }
+        } else {
+            // Handle the case when the user is not authenticated
+            return redirect('/login')->with('alert', 'You must be logged in to perform this action.');
         }
-        return view('/home');
+
+        return redirect('/')->with('success', 'Appointment created successfully.');
     }
+    return view('/home');
+}
 
     /**
      * Display the specified resource.

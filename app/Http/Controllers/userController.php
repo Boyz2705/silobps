@@ -8,6 +8,7 @@ use App\Models\clinic;
 use App\Models\Appointment;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
@@ -111,4 +112,38 @@ class userController extends Controller
         $user->delete();
         return redirect('/adm-user')->with('statusdel', 'Data Deleted');
     }
+
+    public function resetStatus()
+    {
+        // Mengupdate status semua pengguna menjadi 0
+        User::query()->update(['status' => 0]);
+
+        // Redirect ke halaman sebelumnya dengan pesan sukses
+        return redirect()->back()->with('status', 'All user statuses have been reset to available');
+    }
+
+    public function availStatus()
+    {
+        // Mengupdate status semua pengguna menjadi 0
+        User::query()->update(['status' => 0]);
+
+        // Redirect ke halaman sebelumnya dengan pesan sukses
+        return redirect()->back()->with('status', 'All user statuses have been reset to sedia');
+    }
+
+    public function sibukStatus(Request $request, $id)
+{
+    // Mengambil user berdasarkan ID
+    $user = User::findOrFail($id);
+
+    // Mengubah status user sesuai request (misalnya status sibuk = 1)
+    $user->status = 1;  // Atau $request->status jika ingin lebih dinamis
+
+    // Menyimpan perubahan
+    $user->save();
+
+    // Redirect ke halaman home dengan pesan sukses
+    return redirect('home')->with('status', 'Status berhasil diubah menjadi sibuk');
+}
+
 }

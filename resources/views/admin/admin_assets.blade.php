@@ -23,14 +23,7 @@
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="/adm"><img class="img-fluid me-3" src="{{ URL::to('/assets/sibooklogo.png') }}" style="width: 100px">Admin</a>
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-        <!-- Navbar Search-->
-        {{-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-            </div>
-        </form> --}}
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto me-3 me-lg-4">
             @auth
@@ -79,7 +72,6 @@
                                 <a class="nav-link" href="/adm-clinic">Kampus</a>
                                 <a class="nav-link" href="/adm-user">User</a>
                                 <a class="nav-link" href="/adm-pet">Petugas</a>
-                                {{-- <a class="nav-link" href="/adm-gallery">Gallery Table</a> --}}
                                 <a class="nav-link" href="/adm-session">Session Table</a>
                             </nav>
                         </div>
@@ -92,7 +84,7 @@
             </nav>
         </div>
 
-        {{-- main content --}}
+        <!-- main content -->
         <div id="layoutSidenav_content">
             <main>
                 @yield('content')
@@ -105,9 +97,9 @@
                 </div>
             </footer>
         </div>
-        </div>
     </div>
     @endif
+
    <!-- Bootstrap JS -->
    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
 
@@ -117,16 +109,22 @@
    <!-- DataTables JS -->
    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
    <script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js"></script>
-   <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.flash.min.js"></script>
+
+   <!-- Sidebar Toggle Script -->
+   <script>
+       document.getElementById('sidebarToggle').addEventListener('click', function() {
+           document.body.classList.toggle('sb-sidenav-toggled');
+       });
+   </script>
 
    <!-- Inisialisasi DataTables -->
    <script>
-       $(document).ready(function() {
-           $('#datatablesSimple').DataTable({
-               "pagingType": "full_numbers",
-               "order": [[ 3, "desc" ]]// Kolom ke-4 untuk pengurutan berdasarkan tanggal
-           });
-       });
-   </script>
+    $(document).ready(function() {
+        $('#datatablesSimple').DataTable({
+            "pagingType": "full_numbers",
+            "order": [[ 3, "desc" ]] // Kolom ke-4 untuk pengurutan berdasarkan tanggal
+        });
+    });
+</script>
 </body>
 </html>
