@@ -237,6 +237,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/app-recap', [AppointmentController::class, "recap"]);
     Route::get('/adm-app1', [AppointmentController::class, 'date'])->name('logbook.date');
     Route::post('/reset-status', [userController::class, 'resetStatus'])->name('user.resetStatus');
+    Route::put('/user/{id}/update-status', [UserController::class, "updateStatus"])->name('user.update-status');
 
 
 });

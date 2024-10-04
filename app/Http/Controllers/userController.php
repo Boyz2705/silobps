@@ -146,4 +146,16 @@ class userController extends Controller
     return redirect('home')->with('status', 'Status berhasil diubah menjadi sibuk');
 }
 
+public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|integer|in:0,1,2,3',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->status = $request->status;
+        $user->save();
+
+        return redirect()->back()->with('status', 'Status pengguna berhasil diperbarui.');
+    }
 }
