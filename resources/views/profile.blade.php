@@ -47,21 +47,7 @@
                     <input class="form-control" name="city" value="{{ Auth::user()->city }}">
                 </div>
 
-                <div class="mb-3">
-                    <label for="status" class="form-label">Status</label>
-                    <input type="text" class="form-control
-                        {{ Auth::user()->status == 0 ? 'bg-success' :
-                           (Auth::user()->status == 1 ? 'bg-danger' :
-                           (Auth::user()->status == 2 ? 'bg-warning' :
-                           (Auth::user()->status == 3 ? 'bg-secondary' : '')))
-                        }} text-white"
-                    value="{{
-                        Auth::user()->status == 0 ? 'Sedia' :
-                        (Auth::user()->status == 1 ? 'Sibuk' :
-                        (Auth::user()->status == 2 ? 'Sakit' :
-                        'Izin'))
-                    }}" readonly>
-                </div>
+                
 
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>

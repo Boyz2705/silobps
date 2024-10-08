@@ -75,7 +75,6 @@ class userController extends Controller
         $user->address = $request->address;
         $user->notelp = $request->number;
         $user->city = $request->city;
-        $user->status = $request->status;
         $user->petugas = $request->petugas;
         $user->save();
         return redirect('home');

@@ -69,21 +69,32 @@
     </div>
   </nav>
 
-  {{-- banner --}}
   <div id="banner" class="parallax d-flex justify-content-center align-items-center">
     <div class="container banner-content col-lg-6 position-absolute top-50 start-50 translate-middle">
       <div class="text-center">
-        {{-- <p class="fs-1 fw-semibold">
-          SiBook BPS SURABAYA
-        </p> --}}
-        {{-- <p class="d-none d-md-block fw-normal">
-          Mari kita catat logbookmu
-        </p> --}}
         <a><button type="button" class="btn btn-success rounded" data-bs-toggle="modal" data-bs-target="#appointmentModal">Buat Logbook</button></a>
+
+        <!-- Kotak status hanya muncul jika pengguna login -->
+        @auth
+        <div class="mt-3 mb-3">
+          <label for="status" class="form-label">Status</label>
+          <input type="text" class="form-control
+            {{ Auth::user()->status == 0 ? 'bg-success' :
+               (Auth::user()->status == 1 ? 'bg-danger' :
+               (Auth::user()->status == 2 ? 'bg-warning' :
+               (Auth::user()->status == 3 ? 'bg-secondary' : '')))}}
+            text-white"
+          value="{{
+            Auth::user()->status == 0 ? 'Sedia' :
+            (Auth::user()->status == 1 ? 'Sibuk' :
+            (Auth::user()->status == 2 ? 'Sakit' :
+            'Izin'))
+          }}" readonly>
         </div>
+        @endauth
       </div>
-    </div>
-  </div>
+    </div>
+  </div>
 
   {{-- modal --}}
 <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
