@@ -13,9 +13,13 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
+    protected $commands = [
+        Commands\ResetUserStatus::class, // Perbaikan nama kelas di sini
+    ];
+
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('user:reset-status')->daily();
     }
 
     /**

@@ -100,6 +100,39 @@
                                 </div>
 
                                 <div class="form-group mb-3">
+                                    <label class="label" for="address">{{ __('Jurusan') }}</label>
+                                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required>
+
+                                    @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="label" for="notelp">{{ __('No Telp') }}</label>
+                                    <input id="notelp" type="text" class="form-control @error('notelp') is-invalid @enderror" name="notelp" value="{{ old('notelp') }}" required>
+
+                                    @error('notelp')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label class="label" for="petugas">{{ __('Universitas') }}</label>
+                                    <input id="petugas" type="text" class="form-control @error('petugas') is-invalid @enderror" name="petugas" value="{{ old('petugas') }}" required>
+
+                                    @error('petugas')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3">
                                     <label class="label" for="password">{{ __('Password') }}</label>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
@@ -130,7 +163,7 @@
             </div>
         </div>
     </section>
-    
+
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
