@@ -58,6 +58,7 @@
                                             <select name="role" id="" class="form-select mt-2">
                                                 <option value="customer">Customer</option>
                                                 <option value="admin">Admin</option>
+                                                <option value="TidakAktif">Tidak Aktif</option>
                                             </select>
                                             @error('name')
                                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>

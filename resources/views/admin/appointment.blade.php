@@ -44,6 +44,7 @@
                     <th>Kampus</th>
                     <th>Session</th>
                     <th>Detail</th>
+                    <th>Waktu Selesai</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,6 +58,7 @@
                     <td>{{ $app->clinic['clinic_name'] }}</td>
                     <td>{{ optional($app->session)->time }}</td>
                     <td>{{ $app->detail }}</td>
+                    <td>{{ $app->waktuselesai }}</td>
                 </tr>
                 @endforeach
             </tbody>

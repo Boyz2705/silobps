@@ -45,18 +45,59 @@ use Illuminate\Support\Facades\Auth;
                         <th>Pembina</th>
                         <th>Petugas</th>
                         <th>Detail</th>
+                        <th>Waktu Selesai</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($appointments->where('user_id', Auth::user()->id) as $appointment)
+                    @foreach ($appointments as $appointment)
                     <tr>
                         <td>{{ $appointment->app_date }}</td>
-                        <td>{{$appointment->session['time']}}</td>
-                        <td>{{ $appointment->clinic['clinic_name'] }}</td>
-                        <td>{{ $appointment->service['services_name'] }}</td>
-                        <td>{{ $appointment->pet['pet_name'] }}</td>
+                        <td>{{ $appointment->session->time ?? 'Tidak ada' }}</td>
+                        <td>{{ $appointment->clinic->clinic_name ?? 'Tidak ada' }}</td>
+                        <td>{{ $appointment->service->services_name ?? 'Tidak ada' }}</td>
+                        <td>{{ $appointment->pet->pet_name ?? 'Tidak ada' }}</td>
                         <td>{{ $appointment->detail }}</td>
+                        <td>{{ $appointment->waktuselesai ?? 'Belum diisi' }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateWaktuSelesaiModal{{ $appointment->id }}">
+                                Update Waktu Selesai
+                            </button>
+                        </td>
                     </tr>
+
+                    <!-- Modal Update Waktu Selesai -->
+                    <div class="modal fade" id="updateWaktuSelesaiModal{{ $appointment->id }}" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Update Waktu Selesai</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <form action="{{ route('appointments.update.waktuselesai', $appointment->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="waktuselesai">Waktu Selesai</label>
+                                            <select name="waktuselesai" class="form-control" required>
+                                                <option value="">Pilih Waktu Selesai</option>
+                                                @for ($hour = 7; $hour <= 22; $hour++)
+                                                    @php
+                                                        $time = sprintf('%02d:00', $hour);
+                                                    @endphp
+                                                    <option value="{{ $time }}">{{ $time }}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
                 </tbody>
             </table>
@@ -91,6 +132,7 @@ use Illuminate\Support\Facades\Auth;
     </script>
 @endif
 
+@push('scripts')
 <script>
     $(document).ready(function() {
         $('#datatablesSimple').DataTable({
@@ -107,3 +149,4 @@ use Illuminate\Support\Facades\Auth;
         });
     });
 </script>
+@endpush

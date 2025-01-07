@@ -161,14 +161,6 @@
             </select>
             </div>
             <div class="mb-3">
-                <label class="form-label">Select Session</label>
-              <select name="session" class="form-select" aria-label="Default select example">
-                @foreach($sessions as $session)
-              <option value="{{ $session->id }}">{{ $session->time }}</option>
-              @endforeach
-            </select>
-            </div>
-            <div class="mb-3">
             <label class="form-label">Select Petugas</label>
             <select name="pet_id" class="form-select" aria-label="Default select example">
               @foreach($pets as $pet)

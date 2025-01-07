@@ -22,6 +22,7 @@ class Appointment extends Model
         'service_id',
         'status',
         'bill',
+        'waktuselesai',
     ];
 
     public function appointments()

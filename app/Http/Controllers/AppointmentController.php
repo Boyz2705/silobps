@@ -231,4 +231,44 @@ class AppointmentController extends Controller
         $appointment->delete();
         return redirect('/adm-app')->with('statusdel', 'Data Deleted');
     }
+
+    public function updateWaktuSelesai(Request $request, $id)
+{
+    // Validasi input
+    $request->validate([
+        'waktuselesai' => 'required|date_format:H:i'
+    ]);
+
+    try {
+        // Cari appointment berdasarkan ID
+        $appointment = Appointment::findOrFail($id);
+
+        // Update waktu selesai
+        $appointment->waktuselesai = $request->waktuselesai;
+
+        // Simpan perubahan
+        $appointment->save();
+
+        // Ambil appointments untuk user yang sedang login
+        $appointments = Appointment::with(['session', 'clinic', 'service', 'pet'])
+            ->where('user_id', Auth::user()->id)
+            ->orderBy('app_date', 'desc')
+            ->get();
+
+        // Return view dengan appointments
+        return view('myappointment', compact('appointments'))
+            ->with('success', 'Waktu selesai berhasil diupdate');
+
+    } catch (\Exception $e) {
+        // Ambil appointments untuk user yang sedang login
+        $appointments = Appointment::with(['session', 'clinic', 'service', 'pet'])
+            ->where('user_id', Auth::user()->id)
+            ->orderBy('app_date', 'desc')
+            ->get();
+
+        // Return view dengan error
+        return view('myappointment', compact('appointments'))
+            ->with('error', 'Gagal mengupdate waktu selesai: ' . $e->getMessage());
+    }
+}
 }
