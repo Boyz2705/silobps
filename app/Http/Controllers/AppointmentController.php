@@ -250,13 +250,13 @@ class AppointmentController extends Controller
         $appointment->save();
 
         // Ambil appointments untuk user yang sedang login
-        $appointments = Appointment::with(['session', 'clinic', 'service', 'pet'])
-            ->where('user_id', Auth::user()->id)
-            ->orderBy('app_date', 'desc')
-            ->get();
+        // $appointments = Appointment::with(['session', 'clinic', 'service', 'pet'])
+        //     ->where('user_id', Auth::user()->id)
+        //     ->orderBy('app_date', 'desc')
+        //     ->get();
 
         // Return view dengan appointments
-        return view('myappointment', compact('appointments'))
+        return redirect()->back()
             ->with('success', 'Waktu selesai berhasil diupdate');
 
     } catch (\Exception $e) {
