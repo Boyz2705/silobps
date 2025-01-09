@@ -232,7 +232,41 @@ class AppointmentController extends Controller
         return redirect('/adm-app')->with('statusdel', 'Data Deleted');
     }
 
-    public function updateWaktuSelesai(Request $request, $id)
+    // AppointmentController.php
+    public function calendarView(Request $request)
+    {
+        // Get selected month and year, default to current if not specified
+        $month = $request->get('month', now()->month);
+        $year = $request->get('year', now()->year);
+
+        // Create Carbon instance for selected month/year
+        $date = Carbon::createFromDate($year, $month, 1);
+
+        // Get only users with role 'customer'
+        $users = \App\Models\User::where('role', 'customer')->get();
+
+        // Get all logbooks for selected month - modify table name according to your schema
+        $logbooks = \App\Models\Appointment::whereYear('app_date', $year)
+            ->whereMonth('app_date', $month)
+            ->whereNotNull('app_date') // Make sure there's a date
+            ->get()
+            ->groupBy(['user_id', function($item) {
+                return Carbon::parse($item->app_date)->format('d');
+            }]);
+
+        // Debug log to check data
+        // \Log::info('Logbooks data:', ['logbooks' => $logbooks]);
+
+        return view('admin.calendar', [
+            'users' => $users,
+            'appointments' => $logbooks, // we're passing logbooks data here
+            'currentMonth' => $date,
+            'months' => array_map(function($m) {
+                return Carbon::create(null, $m, 1)->format('F');
+            }, range(1, 12)),
+            'years' => range(2024, 2034),
+        ]);
+    }    public function updateWaktuSelesai(Request $request, $id)
 {
     // Validasi input
     $request->validate([

@@ -81,17 +81,34 @@ class userController extends Controller
     }
 
     public function updateadm(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
-        $user->email = $request->email;
-        $user->name = $request->name;
-        $user->address = $request->address;
-        $user->notelp = $request->number;
-        $user->city = $request->city;
-        $user->role = $request->role;
-        $user->save();
-        return redirect('/adm-user');
+{
+    // Validasi input
+    $request->validate([
+        'email' => 'required|email',
+        'name' => 'required|string|max:255',
+        'address' => 'nullable|string|max:255',
+        'number' => 'nullable|string|max:15',
+        'city' => 'nullable|string|max:100',
+        'role' => 'required|string',
+        'password' => 'nullable|string|min:8|confirmed', // Validasi password
+    ]);
+
+    $user = User::findOrFail($id);
+    $user->email = $request->email;
+    $user->name = $request->name;
+    $user->address = $request->address;
+    $user->notelp = $request->number;
+    $user->city = $request->city;
+    $user->role = $request->role;
+
+    // Jika password baru diberikan, hash dan simpan
+    if ($request->filled('password')) {
+        $user->password = bcrypt($request->password);
     }
+
+    $user->save();
+    return redirect('/adm-user')->with('success', 'User  updated successfully.');
+}
 
     public function edit($id)
     {

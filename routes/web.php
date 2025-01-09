@@ -117,6 +117,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('admin.pet');
     });
 
+    Route::get('/calendar', [AppointmentController::class, 'calendarView'])->name('calendar.view');
+    
     Route::get('/adm-petedit', function () {
         return view('admin.petedit');
     });
