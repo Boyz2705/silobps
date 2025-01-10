@@ -1,9 +1,5 @@
 @extends('admin.admin_assets')
 
-@php
-    use Carbon\Carbon;
-@endphp
-
 @section('content')
 <div class="container-fluid px-4">
     <h1 class="mt-4">Logbook Calendar</h1>
@@ -16,14 +12,16 @@
             <form class="d-flex gap-2" method="GET" action="{{ route('calendar.view') }}">
                 <select class="form-select form-select-sm" name="month" onchange="this.form.submit()">
                     @foreach($months as $index => $monthName)
-                        <option value="{{ $index + 1 }}" {{ $currentMonth->month === ($index + 1) ? 'selected' : '' }}>
+                        <option value="{{ $index }}"
+                            {{ $currentMonth->month === $index ? 'selected' : '' }}>
                             {{ $monthName }}
                         </option>
                     @endforeach
                 </select>
                 <select class="form-select form-select-sm" name="year" onchange="this.form.submit()">
                     @foreach($years as $year)
-                        <option value="{{ $year }}" {{ $currentMonth->year === $year ? 'selected' : '' }}>
+                        <option value="{{ $year }}"
+                            {{ $currentMonth->year === $year ? 'selected' : '' }}>
                             {{ $year }}
                         </option>
                     @endforeach
@@ -38,10 +36,11 @@
                             <th>Customer</th>
                             @for($day = 1; $day <= $currentMonth->daysInMonth; $day++)
                                 @php
-                                    $date = Carbon::createFromDate($currentMonth->year, $currentMonth->month, $day);
+                                    $date = Carbon\Carbon::create($currentMonth->year, $currentMonth->month, $day);
                                     $isWeekend = $date->isWeekend();
                                 @endphp
-                                <th class="text-center {{ $isWeekend ? 'text-muted' : '' }}">
+                                <th class="text-center {{ $isWeekend ? 'text-muted' : '' }}"
+                                    style="width: 40px">
                                     {{ $day }}<br>
                                     <small>{{ $date->format('D') }}</small>
                                 </th>
@@ -54,15 +53,16 @@
                                 <td class="fw-bold">{{ $user->name }}</td>
                                 @for($day = 1; $day <= $currentMonth->daysInMonth; $day++)
                                     @php
-                                        $date = Carbon::createFromDate($currentMonth->year, $currentMonth->month, $day);
-                                        $isWeekend = $date->isWeekend();
+                                        $date = Carbon\Carbon::create($currentMonth->year, $currentMonth->month, $day);
+                                        $isWeekend = $date->isWeekend(); // Check if the day is Saturday or Sunday
                                         $hasLogbook = isset($appointments[$user->id][$day]);
                                     @endphp
                                     <td class="p-0">
                                         <div class="d-flex justify-content-center align-items-center"
                                              style="height: 40px;
-                                                    background-color: {{ $isWeekend ? '#f8f9fa' : ($hasLogbook ? '#ef4444' : '#22c55e') }}"
-                                             title="{{ $user->name }} - {{ $date->format('Y-m-d') }}">
+                                                    background-color: {{ $isWeekend ? '#ffffff' : ($hasLogbook ? '#ef4444' : '#22c55e') }};
+                                                    color: {{ $isWeekend ? '#000000' : '#ffffff' }};"
+                                             title="{{ $user->name }} - {{ $day }} ({{ $date->format('D') }})">
                                         </div>
                                     </td>
                                 @endfor
@@ -75,6 +75,7 @@
                             </tr>
                         @endforelse
                     </tbody>
+
                 </table>
             </div>
         </div>

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models;
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\payment;
+use App\Models\service;
+use App\Models\Services;
 use App\Models\Appointment;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreappointmentRequest;
 use App\Http\Requests\UpdateappointmentRequest;
-use App\Models\service;
-use App\Models;
-use App\Models\payment;
-use App\Models\Services;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
@@ -243,30 +244,29 @@ class AppointmentController extends Controller
         $date = Carbon::createFromDate($year, $month, 1);
 
         // Get only users with role 'customer'
-        $users = \App\Models\User::where('role', 'customer')->get();
+        $users = User::where('role', 'customer')->get();
 
-        // Get all logbooks for selected month - modify table name according to your schema
-        $logbooks = \App\Models\Appointment::whereYear('app_date', $year)
+        // Get all logbooks for selected month, group them by user and date
+        $logbooks = Appointment::whereYear('app_date', $year)
             ->whereMonth('app_date', $month)
-            ->whereNotNull('app_date') // Make sure there's a date
             ->get()
-            ->groupBy(['user_id', function($item) {
-                return Carbon::parse($item->app_date)->format('d');
+            ->groupBy(['user_id', function ($item) {
+                return Carbon::parse($item->app_date)->day;
             }]);
-
-        // Debug log to check data
-        // \Log::info('Logbooks data:', ['logbooks' => $logbooks]);
 
         return view('admin.calendar', [
             'users' => $users,
-            'appointments' => $logbooks, // we're passing logbooks data here
-            'currentMonth' => $date,
-            'months' => array_map(function($m) {
-                return Carbon::create(null, $m, 1)->format('F');
-            }, range(1, 12)),
-            'years' => range(2024, 2034),
+            'appointments' => $logbooks, // Grouped appointments
+            'currentMonth' => $date,     // Carbon instance for current month
+            'months' => collect(range(1, 12))->mapWithKeys(function ($m) {
+                return [$m => Carbon::create(null, $m, 1)->format('F')];
+            }),
+            'years' => range($date->year - 5, $date->year + 5), // 5 years before and after
         ]);
-    }    public function updateWaktuSelesai(Request $request, $id)
+    }
+
+
+    public function updateWaktuSelesai(Request $request, $id)
 {
     // Validasi input
     $request->validate([
