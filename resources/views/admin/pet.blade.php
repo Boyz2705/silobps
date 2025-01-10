@@ -26,6 +26,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Phone</th>
                         <th width="280px">Action</th>
                     </tr>
                 </thead>
@@ -34,6 +35,7 @@
                         <tr>
                             <td>{{ $pet->id }}</td>
                             <td>{{ $pet->pet_name }}</td>
+                            <td>{{ $pet->phone }}</td>
                             <td>
                                 <a class="btn btn-primary" href="petedit_test/{{ $pet->id }}">Edit</a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delmodal-{{ $pet->id }}">Delete</button>

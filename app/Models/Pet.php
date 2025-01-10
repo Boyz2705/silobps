@@ -10,7 +10,8 @@ class Pet extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'pet_name'
+        'pet_name',
+        'phone',
     ];
     public function pets()
     {

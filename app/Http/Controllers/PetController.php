@@ -112,6 +112,7 @@ class PetController extends Controller
             Pet::create([
                 'id' => $request->id,
                 'pet_name' => $request->name,
+                'phone' => $request->phone,
             ]);
             return redirect('/adm-pet')->with('status', 'New Data Added to Database');
         }
@@ -159,6 +160,7 @@ class PetController extends Controller
         $pet = Pet::findOrFail($id);
         $pet->id = $request->id;
         $pet->pet_name = $request->name;
+        $pet->phone = $request->phone;
         $pet->save();
         return redirect('/adm-pet');
     }

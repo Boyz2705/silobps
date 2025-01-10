@@ -7,10 +7,13 @@ use App\Http\Requests\StoreappointmentRequest;
 use App\Http\Requests\UpdateappointmentRequest;
 use App\Models\service;
 use App\Models;
+use App\Models\Pet;
 use App\Models\payment;
 use App\Models\Services;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
@@ -171,6 +174,23 @@ class AppointmentController extends Controller
             return redirect('/login')->with('alert', 'You must be logged in to perform this action.');
         }
 
+        $pet = Pet::findOrFail($request->pet_id);
+
+        if ($pet->phone) {
+        // Kirim notifikasi ke petugas
+        $data = [
+            'user_name' => $user->name, // Nama pengguna
+            'app_date' => $request->app_date, // Tanggal janji temu
+            'pet_name' => $pet->pet_name, // Nama petugas
+            'service_name' => $bill->name, // Nama layanan
+            'detail' => $request->detail, // Detail janji temu
+        ];
+
+        $this->sendNotification($pet->phone, $data);
+    } else {
+        Log::warning('Nomor telepon petugas tidak tersedia', ['pet_id' => $pet->id]);
+    }
+
         return redirect('/')->with('success', 'Appointment created successfully.');
     }
     return view('/home');
@@ -271,4 +291,47 @@ class AppointmentController extends Controller
             ->with('error', 'Gagal mengupdate waktu selesai: ' . $e->getMessage());
     }
 }
+
+public function sendNotification($phone, $data)
+{
+    $token = env('WA_TOKEN');
+    $url = 'https://app.waconnect.id/api/send_message';
+
+    // Pesan untuk petugas
+    $message =
+        "Pengguna dengan nama {$data['user_name']} telah menambahkan logbook dengan informasi berikut:\n" .
+        "Nama Petugas: {$data['pet_name']}\n" .
+        "Tanggal: {$data['app_date']}\n" .
+        "Detail: {$data['detail']}\n\n";
+
+    try {
+        $response = Http::asForm()->post($url, [
+            'token'   => $token,
+            'number'  => $phone,
+            'message' => $message,
+        ]);
+
+        if ($response->successful()) {
+            Log::info('Pesan berhasil dikirim', $response->json());
+            return [
+                'status'   => 'success',
+                'response' => $response->json(),
+            ];
+        } else {
+            Log::error('Pesan gagal dikirim', $response->json());
+            return [
+                'status'   => 'error',
+                'response' => $response->json(),
+            ];
+        }
+    } catch (\Exception $e) {
+        Log::error('Kesalahan saat mengirim pesan', ['error' => $e->getMessage()]);
+        return [
+            'status'  => 'error',
+            'message' => $e->getMessage(),
+        ];
+    }
+}
+
+
 }

@@ -22,16 +22,23 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                            <strong > ID:</strong>
-                                                <input type="text" name="id" class="form-control mt-2" placeholder="Pet ID" required>
+                                            <strong > ID Petugas:</strong>
+                                                <input type="text" name="id" class="form-control mt-2" placeholder="1" required>
                                             @error('id')
                                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="form-group mt-2">
-                                            <strong >Name:</strong>
-                                                <input type="text" name="name" class="form-control mt-2" placeholder="Pet Name" required>
+                                            <strong >Nama Petugas:</strong>
+                                                <input type="text" name="name" class="form-control mt-2" placeholder="Fulan" required>
                                             @error('name')
+                                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <strong>Nomor Telepon:</strong>
+                                            <input type="text" name="phone" class="form-control mt-2" placeholder="0895383119600" required>
+                                            @error('phone')
                                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                             @enderror
                                         </div>
