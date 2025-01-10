@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointment;
-use App\Http\Requests\StoreappointmentRequest;
-use App\Http\Requests\UpdateappointmentRequest;
-use App\Models\service;
 use App\Models;
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Pet;
 use App\Models\payment;
+use App\Models\service;
 use App\Models\Services;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreappointmentRequest;
+use App\Http\Requests\UpdateappointmentRequest;
 
 class AppointmentController extends Controller
 {
@@ -252,6 +253,39 @@ class AppointmentController extends Controller
         return redirect('/adm-app')->with('statusdel', 'Data Deleted');
     }
 
+    // AppointmentController.php
+    public function calendarView(Request $request)
+    {
+        // Get selected month and year, default to current if not specified
+        $month = $request->get('month', now()->month);
+        $year = $request->get('year', now()->year);
+
+        // Create Carbon instance for selected month/year
+        $date = Carbon::createFromDate($year, $month, 1);
+
+        // Get only users with role 'customer'
+        $users = User::where('role', 'customer')->get();
+
+        // Get all logbooks for selected month, group them by user and date
+        $logbooks = Appointment::whereYear('app_date', $year)
+            ->whereMonth('app_date', $month)
+            ->get()
+            ->groupBy(['user_id', function ($item) {
+                return Carbon::parse($item->app_date)->day;
+            }]);
+
+        return view('admin.calendar', [
+            'users' => $users,
+            'appointments' => $logbooks, // Grouped appointments
+            'currentMonth' => $date,     // Carbon instance for current month
+            'months' => collect(range(1, 12))->mapWithKeys(function ($m) {
+                return [$m => Carbon::create(null, $m, 1)->format('F')];
+            }),
+            'years' => range($date->year - 5, $date->year + 5), // 5 years before and after
+        ]);
+    }
+
+
     public function updateWaktuSelesai(Request $request, $id)
 {
     // Validasi input
@@ -270,13 +304,13 @@ class AppointmentController extends Controller
         $appointment->save();
 
         // Ambil appointments untuk user yang sedang login
-        $appointments = Appointment::with(['session', 'clinic', 'service', 'pet'])
-            ->where('user_id', Auth::user()->id)
-            ->orderBy('app_date', 'desc')
-            ->get();
+        // $appointments = Appointment::with(['session', 'clinic', 'service', 'pet'])
+        //     ->where('user_id', Auth::user()->id)
+        //     ->orderBy('app_date', 'desc')
+        //     ->get();
 
         // Return view dengan appointments
-        return view('myappointment', compact('appointments'))
+        return redirect()->back()
             ->with('success', 'Waktu selesai berhasil diupdate');
 
     } catch (\Exception $e) {
