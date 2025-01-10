@@ -187,7 +187,7 @@ class AppointmentController extends Controller
             'detail' => $request->detail, // Detail janji temu
         ];
 
-        $this->sendNotification($pet->phone, $data);
+        // $this->sendNotification($pet->phone, $data);
     } else {
         Log::warning('Nomor telepon petugas tidak tersedia', ['pet_id' => $pet->id]);
     }
