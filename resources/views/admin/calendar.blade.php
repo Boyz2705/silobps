@@ -29,6 +29,19 @@
             </form>
         </div>
         <div class="card-body">
+            <!-- Legend Section -->
+            <div class="mb-3">
+                <h5>Legenda:</h5>
+                <div class="d-flex gap-3 align-items-center">
+                    <div style="width: 20px; height: 20px; background-color: #EEEEEE; border: 1px solid #ddd;"></div>
+                    <span>Hari Libur</span>
+                    <div style="width: 20px; height: 20px; background-color: #7E60BF; border: 1px solid #ddd;"></div>
+                    <span>Ada Kerjaan</span>
+                    <div style="width: 20px; height: 20px; background-color: #D4BEE4; border: 1px solid #ddd;"></div>
+                    <span>Nganggur</span>
+                </div>
+            </div>
+
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -60,8 +73,8 @@
                                     <td class="p-0">
                                         <div class="d-flex justify-content-center align-items-center"
                                              style="height: 40px;
-                                                    background-color: {{ $isWeekend ? '#ffffff' : ($hasLogbook ? '#ef4444' : '#22c55e') }};
-                                                    color: {{ $isWeekend ? '#000000' : '#ffffff' }};"
+                                                    background-color: {{ $isWeekend ? '#EEEEEE' : ($hasLogbook ? '#7E60BF' : '#D4BEE4') }};
+                                                    color: {{ $isWeekend ? '#000000' : '#EEEEEE' }};"
                                              title="{{ $user->name }} - {{ $day }} ({{ $date->format('D') }})">
                                         </div>
                                     </td>
@@ -75,7 +88,6 @@
                             </tr>
                         @endforelse
                     </tbody>
-
                 </table>
             </div>
         </div>
